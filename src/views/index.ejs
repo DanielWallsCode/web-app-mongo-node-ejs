@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <title>Pinterest</title>
+    <%- include("partials/head") %>
+</head>
+<body>
+    
+    <%- include("partials/navigations") %>
+    
+    <div class="container p-4">
+        <div class="row" >
+            <div class="card-columns" style="display: flex; flex-wrap: wrap;">
+                <% images.forEach(function(image) { %>
+                    <div class="card animate__backOutDown" style="margin-right: 25px; border-radius: 20px; margin-top: 20px;">
+                        <img  src="<%= image.path %>" style="height: 500px;  border-radius: 20px;" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title"><%= image.title %></h5>
+                            <p class="card-text"><%= image.description %></p>
+                            <p class="card-text"><%= format(image.created_at) %></p>
+                            <a href="/image/<%= image._id %>" class="btn btn-primary">Ver Imagen</a>
+                        </div>
+                    </div>
+                <% }) %>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
